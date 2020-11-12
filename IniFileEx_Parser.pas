@@ -900,7 +900,7 @@ try
             ivtDateTime:  ValReadCheckAndRaise(Stream_ReadBuffer(fStream,TempValue.DateTimeValue,SizeOf(TDateTime)),SizeOf(TDateTime));
             ivtBinary:    begin
                             ValReadCheckAndRaise(Stream_ReadUInt64(fStream,BinSize),SizeOf(UInt64));
-                          {$IFNDEF 64bit}
+                          {$IFNDEF CPU64bit}
                             If BinSize > UInt64(High(TMemSize)) then
                               raise Exception.Create('TIFXParser.Binary_0000_ReadKey: Too much raw data.');
                           {$ENDIF}
